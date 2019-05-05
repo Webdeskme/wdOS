@@ -1,0 +1,30 @@
+{
+  "name": "wdos",
+  "version": "1.0.0",
+  "description": "WebDesktop OS GUI.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Webdeskme/wdOS.git"
+  },
+  "keywords": [
+    "WebDesktop",
+    "wdOS",
+    "WebFrame"
+  ],
+  "author": "WebFrame",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Webdeskme/wdOS/issues"
+  },
+  "homepage": "https://github.com/Webdeskme/wdOS#readme",
+  "devDependencies": {
+    "electron": "^5.0.1"
+  },
+  "dependencies": {
+    "dat": "^13.13.0"
+  }
+}
