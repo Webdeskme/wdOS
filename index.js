@@ -3,6 +3,21 @@ $(document).ready(function(){
   const {ipcRenderer} = require('electron');
   var exec = require('child_process').exec;
   var fs = require('fs');
+  const {shell} = require('electron');
+  const wd_homedir = require('os').homedir();
+  console.log("Starting OS GUI");
+  var wd_home = wd_homedir + '/Documents/wdOS/';
+  if (!fs.existsSync(wd_home)) {
+    fs.mkdirSync(wd_home);
+  }
+  var wd_dir = wd_home + 'App/';
+  if (!fs.existsSync(wd_dir)) {
+    fs.mkdirSync(wd_dir);
+  }
+  var wd_dir = wd_home + 'Docs/';
+  if (!fs.existsSync(wd_dir)) {
+    fs.mkdirSync(wd_dir);
+  }
   var window = remote.getCurrentWindow();
   $("#shut").click(function(){
     ipcRenderer.send('show-child', "file://" + __dirname + "/shut.html");
@@ -19,10 +34,6 @@ $(document).ready(function(){
   $("#browser").click(function(){
     ipcRenderer.send('show-child', "file://" + __dirname + "/browser.html");
   });
-  /*$("#c1").click(function(){
-    exec('touch /home/pipertel/Documents/123456.ab');
-  });*/
-  ///////
   function startTime() {
     var today = new Date();
     var h = today.getHours();

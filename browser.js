@@ -1,0 +1,20 @@
+$(document).ready(function(){
+  const remote = require('electron').remote;
+  const {ipcRenderer} = require('electron');
+  var fs = require('fs');
+  const {shell} = require('electron');
+  const wd_homedir = require('os').homedir();
+  var wd_home = wd_homedir + '/Documents/wdOS/App/';
+  console.log("Starting OS GUI");
+  $("#app").html('');
+  files = fs.readdirSync(wd_home);
+  for (i = 0; i < files.length; i++) {
+    console.log(files[i]);
+    if (fs.existsSync(wd_home + files[i] + '/index.html')) {
+      var file = fs.readFileSync(wd_home + files[i] + '/wd.json');
+      var obj = JSON.parse(file);
+      var aname = obj.name.substr(0, 4);
+      $("#app").append('<div class="col-sm-1 wd_apps" data-toggle="tooltip" title="' + obj.des + '"><a href="' + wd_home + files[i] + '/index.html"><img class="card-img-bottom" src="ic.png" alt="' + obj.name + '" style="width:100%"></a><figcaption><a href="' + wd_home + files[i] + '/index.html" class="text-light">' + aname + '</a></figcaption></div>');
+    }
+  }
+});

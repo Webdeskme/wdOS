@@ -25,6 +25,7 @@
     "electron": "^5.0.1"
   },
   "dependencies": {
-    "dat": "^13.13.0"
+    "dat": "^13.13.0",
+    "fs-extra": "^7.0.1"
   }
 }
