@@ -2,8 +2,106 @@
 <html>
   <head>
     <title>wdOS</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="Plugins/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="Plugins/fontawesome/css/all.css">
+  <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-    
+  <body background="back.jpg">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark wd_nav">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#" id="browser"><img src="wd.png" alt="Logo" style="width:40px;"><!-- <span  id="wd_time"></span>--></a>
+
+      <!-- Toggler/collapsibe Button -->
+      <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>-->
+
+      <!-- Navbar links -->
+      <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">-->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="wd_time"></a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#wd_app" title="Open App"><i class="fas fa-folder-open wd_2"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="c1"><i class="fas fa-star wd_2"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-compass wd_2"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#set" title="Settings"><i class="fas fa-cog wd_2"></i></a>
+          </li>-->
+        </ul>
+        <ul class="navbar-nav ml-auto text-light">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="shut"><i class="fas fa-power-off wd_2"></i></a>
+          </li>
+        </ul>
+      <!--</div>-->
+    </nav>
+    <div id="set" class="collapse bg-secondary wd_app">
+      <div class="jumbotron">
+          <h1>Settings</h1>
+          <p>All of the OS settings can be found here.</p>
+      </div>
+      <div class="container">
+      <div class="card">
+        <div class="card-header bg-info text-light"><h4 class="card-title">Password Change:</h4></div>
+        <form class="container">
+          <br><br>
+          <div class="form-group">
+            <label for="pwd">New Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Password">
+         </div>
+         <div class="form-group">
+           <label for="vpwd">Verify New Password:</label>
+           <input type="password" class="form-control" id="vpwd" placeholder="Verify Password">
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Save</button>
+      </form>
+        <br><br>
+      </div>
+      <br><br>
+      </div>
+    </div>
+    <div id="wd_app" class="collapse bg-secondary wd_app">
+      <webview id="foo" src="/home/pipertel/Documents/Webdesktop/WebDesktop_App/OnePage/index.html" style="display:inline-flex; width:100%; height:100%;"></webview>
+    </div>
+    <!-- The Modal -->
+<div class="modal fade" id="shut">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Power Off</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!--<button class="btn btn-outline-secondary" id="cOS">Close OS</button> <button class="btn btn-outline-secondary" id="cc">Shutdown</button> <button class="btn btn-outline-secondary" id="c1">Lime Rick</button>-->
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+    <!--<button id="cOS">Close OS</button><button id="cc">Shutdown</button><button id="c1">Try it!</button>-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="Plugins/jquery.min.js"></script>
+    <script src="Plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="Plugins/fontawesome/js/all.js"></script>
+    <script src="index.js"></script>
+    <script>if (window.module) module = window.module;</script>
   </body>
 </html>
