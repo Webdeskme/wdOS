@@ -18,6 +18,10 @@ $(document).ready(function(){
   if (!fs.existsSync(wd_dir)) {
     fs.mkdirSync(wd_dir);
   }
+  var wd_dir = wd_home + 'Core/';
+  if (!fs.existsSync(wd_dir)) {
+    fs.mkdirSync(wd_dir);
+  }
   var window = remote.getCurrentWindow();
   $("#shut").click(function(){
     ipcRenderer.send('show-child', "file://" + __dirname + "/shut.html");
@@ -33,6 +37,9 @@ $(document).ready(function(){
   });
   $("#browser").click(function(){
     ipcRenderer.send('show-child', "file://" + __dirname + "/browser.html");
+  });
+  $("#wd_time").click(function(){
+    ipcRenderer.send('show-child', "file://" + __dirname + "/history.html");
   });
   function startTime() {
     var today = new Date();
