@@ -9,15 +9,16 @@ const electron = require('electron')
   function createWindow () {
     const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize
     // Create the browser window.
-    win = new BrowserWindow({width: 375, height: 667, frame: false, backgroundColor: '#2e2c29', kiosk: false, webPreferences: {
+    win = new BrowserWindow({width: width, height: height, frame: false, backgroundColor: '#2e2c29', kiosk: true, webPreferences: {
     nodeIntegration: true
   }})
     //let child = new BrowserWindow({ parent: win, modal: false, show: false, width: 800, height: 600, webPreferences: {nodeIntegration: true}})
   let view = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
 win.setBrowserView(view)
 wstart = width*0.04;
+var nheight = height - 30;
 //hstart = height*0.9;
-view.setBounds({ x: 0, y: wstart, width: 375, height: 667 })
+view.setBounds({ x: 0, y: 80, width: width, height: nheight })
 view.webContents.loadURL('file://' + __dirname + '/browser.html')
 
 //view.loadFile('browser.html')
