@@ -7,7 +7,7 @@ $(document).ready(function(){
   const wd_homedir = require('os').homedir();
   console.log("Starting OS GUI");
   var wd_home = wd_homedir + '/Documents/wdOS/';
-  if (!fs.existsSync(wd_home)) {
+  /*if (!fs.existsSync(wd_home)) {
     fs.mkdirSync(wd_home);
   }
   var wd_dir = wd_home + 'App/';
@@ -21,10 +21,18 @@ $(document).ready(function(){
   var wd_dir = wd_home + 'Core/';
   if (!fs.existsSync(wd_dir)) {
     fs.mkdirSync(wd_dir);
-  }
+  }*/
   var window = remote.getCurrentWindow();
   $("#shut").click(function(){
-    ipcRenderer.send('show-child', "file://" + __dirname + "/shut.html");
+    ipcRenderer.send('admin-child', "file://" + __dirname + "/shut.html");
+  });
+  $("#search").click(function(){
+    //var sc = document.getElementById("search-con").value;
+    ipcRenderer.send('show-url', "https://duckduckgo.com/");
+  });
+  $("#p").click(function(){
+    //var sc = document.getElementById("search-con").value;
+    ipcRenderer.send('wifi-url', "https://duckduckgo.com/");
   });
   $("#lock").click(function(){
     exec('dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock');
@@ -39,7 +47,7 @@ $(document).ready(function(){
     ipcRenderer.send('show-child', "file://" + __dirname + "/browser.html");
   });
   $("#wd_time").click(function(){
-    ipcRenderer.send('show-child', "file://" + __dirname + "/history.html");
+    ipcRenderer.send('admin-child', "file://" + __dirname + "/history.html");
   });
   function startTime() {
     var today = new Date();
