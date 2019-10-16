@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Browser</title>
+<title>Controle Pannel</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="Plugins/bootstrap/dist/css/bootstrap.min.css">
@@ -10,13 +10,29 @@
 </head>
 <body background="back.jpg">
   <div class="card bg-light">
-    <button class="btn btn-outline-secondary" id="lock">Lock</button> <button class="btn btn-outline-secondary" id="cos">Close OS</button> <button class="btn btn-outline-secondary" id="cc">Shut Down</button>
+    <button class="btn btn-outline-secondary" id="lock">Lock</button>
+    <button class="btn btn-outline-secondary" id="cos">Close OS</button>
+    <button class="btn btn-outline-secondary" id="cc">Shut Down</button>
+  </div>
+  <br>
+  <div class="card bg-success">
+    <button class="btn btn-outline-light" id="market">Market Place</button>
+    <button class="btn btn-outline-light" id="set">Settings</button>
+    <button class="btn btn-outline-light" id="help">Help</button>
+  </div>
+  <br>
+  <div class="card bg-warning">
+    <button class="btn btn-outline-light" id="sf">System Files</button>
+  </div>
+  <br>
+  <div class="card bg-info">
+    <button class="btn btn-outline-light" id="cog">Cog&Wheel</button>
   </div>
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="Plugins/jquery.min.js"></script>
   <script src="Plugins/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="Plugins/fontawesome/js/all.js"></script>
-  <script src="index.js"></script>
+  <script src="shut.js"></script>
   <script>if (window.module) module = window.module;</script>
 </body>
 </html>

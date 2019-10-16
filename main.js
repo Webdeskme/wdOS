@@ -82,18 +82,27 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     nodeIntegration: true
   }})
     //let child = new BrowserWindow({ parent: win, modal: false, show: false, width: 800, height: 600, webPreferences: {nodeIntegration: true}})
-    let admin = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+  let admin = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+  let adminURL = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: false, webviewTag: true}})
+  let help = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
   let view = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
   let view2 = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
   let view3 = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
   let view4 = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
   let webv = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: false, webviewTag: true}})
+  let webv2 = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: false, webviewTag: true}})
+  let webv3 = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: false, webviewTag: true}})
+  let webv4 = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: false, webviewTag: true}})
 win.setBrowserView(view)
 wstart = width*0.04;
 var nheight = h - 30;
 //hstart = height*0.9;
 admin.setBounds({ x: 0, y: 80, width: w, height: nheight })
 admin.webContents.loadURL('file://' + __dirname + '/history.html')
+adminURL.setBounds({ x: 0, y: 80, width: w, height: nheight })
+adminURL.webContents.loadURL('https://www.webfra.me')
+help.setBounds({ x: 0, y: 80, width: w, height: nheight })
+help.webContents.loadURL('file://' + __dirname + '/Help/index.html')
 view.setBounds({ x: 0, y: 80, width: w, height: nheight })
 view.webContents.loadURL('file://' + __dirname + '/browser.html')
 view2.setBounds({ x: 0, y: 80, width: w, height: nheight })
@@ -104,6 +113,12 @@ view4.setBounds({ x: 0, y: 80, width: w, height: nheight })
 view4.webContents.loadURL('file://' + __dirname + '/browser.html')
 webv.setBounds({ x: 0, y: 80, width: w, height: nheight })
 webv.webContents.loadURL('https://duckduckgo.com/')
+webv2.setBounds({ x: 0, y: 80, width: w, height: nheight })
+webv2.webContents.loadURL('https://duckduckgo.com/')
+webv3.setBounds({ x: 0, y: 80, width: w, height: nheight })
+webv3.webContents.loadURL('https://duckduckgo.com/')
+webv4.setBounds({ x: 0, y: 80, width: w, height: nheight })
+webv4.webContents.loadURL('https://duckduckgo.com/')
 
 //view.loadFile('browser.html')
     // and load the index.html of the app.
@@ -146,6 +161,17 @@ webv.webContents.loadURL('https://duckduckgo.com/')
         //view.show();
         win.setBrowserView(admin)
         admin.webContents.loadURL(arg);
+    })
+    ipcMain.on('adminURL-child', function(event, arg){
+      //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+        //view.show();
+        win.setBrowserView(adminURL)
+        adminURL.webContents.loadURL(arg);
+    })
+    ipcMain.on('help-child', function(event, arg){
+      //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+        //view.show();
+        win.setBrowserView(help)
     })
     ipcMain.on('show-child', function(event, arg){
       //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
@@ -196,9 +222,36 @@ webv.webContents.loadURL('https://duckduckgo.com/')
         win.setBrowserView(webv)
         webv.webContents.loadURL(arg);
     })
+    ipcMain.on('show-url2', function(event, arg){
+      //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+        win.setBrowserView(webv2)
+        webv2.webContents.loadURL(arg);
+    })
+    ipcMain.on('show-url3', function(event, arg){
+      //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+        win.setBrowserView(webv3)
+        webv3.webContents.loadURL(arg);
+    })
+    ipcMain.on('show-url4', function(event, arg){
+      //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+        win.setBrowserView(webv4)
+        webv4.webContents.loadURL(arg);
+    })
     ipcMain.on('wifi-url', function(event, arg){
       //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
         win.setBrowserView(webv)
+    })
+    ipcMain.on('wifi-url2', function(event, arg){
+      //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+        win.setBrowserView(webv2)
+    })
+    ipcMain.on('wifi-url3', function(event, arg){
+      //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+        win.setBrowserView(webv3)
+    })
+    ipcMain.on('wifi-url4', function(event, arg){
+      //view = BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
+        win.setBrowserView(webv4)
     })
   }
 

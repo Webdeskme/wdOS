@@ -32,16 +32,7 @@ $(document).ready(function(){
   });
   $("#p").click(function(){
     //var sc = document.getElementById("search-con").value;
-    ipcRenderer.send('wifi-url', "https://duckduckgo.com/");
-  });
-  $("#lock").click(function(){
-    exec('dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock');
-  });
-  $("#cos").click(function(){
-    window.close();
-  });
-  $("#cc").click(function(){
-    exec('shutdown now');
+    ipcRenderer.send('admin-child', "file://" + __dirname + "/tabs.html");
   });
   $("#browser").click(function(){
     ipcRenderer.send('show-child', "file://" + __dirname + "/browser.html");
