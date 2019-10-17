@@ -27,4 +27,7 @@ $(document).ready(function(){
   $("#help").click(function(){
     ipcRenderer.send('help-child', "file://" + __dirname + "/Help/index.html");
   });
+  $("#set").click(function(){
+    ipcRenderer.send('admin-child', "file://" + __dirname + "/set.html");
+  });
 });

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Plugins/fontawesome/css/all.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="text-center">
+      <h1>Settings</h1>
+    </div>
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <label for="k">Kiosk Mode:</label>
+          <select class="form-control" id="k">
+            <option value="false">False</option>
+            <option value="true">True</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="w">Window Width:</label>
+          <input type="number" value="800" class="form-control" id="w">
+        </div>
+        <div class="form-group">
+          <label for="h">Window Height:</label>
+          <input type="number" value="600" class="form-control" id="h">
+        </div>
+        <div class="form-group">
+          <label for="f">With Frame:</label>
+          <select class="form-control" id="f">
+            <option value="false">False</option>
+            <option value="true">True</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
+      </form>
+    </div>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="Plugins/jquery.min.js"></script>
+    <script src="Plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="Plugins/fontawesome/js/all.js"></script>
+    <script src="set.js"></script>
+    <script>if (window.module) module = window.module;</script>
+  </body>
+</html>
