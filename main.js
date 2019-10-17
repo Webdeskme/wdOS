@@ -59,8 +59,9 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
-    if (fs.existsSync(wd_home + '/Core/set.json')) {
-          var file = fs.readFileSync(wd_home + '/Core/set.json');
+    fs.writeFileSync(wd_home + 'Core/set.json', '{"kioske": false, "height": 600, "width": 800, "frame": true}');
+    if (fs.existsSync(wd_home + 'Core/set.json')) {
+          var file = fs.readFileSync(wd_home + 'Core/set.json');
           var obj = JSON.parse(file);
           var w = obj.width;
           var h = obj.height;
@@ -140,7 +141,7 @@ webv4.webContents.loadURL('https://duckduckgo.com/')
     // Open the DevTools.
     //win.webContents.openDevTools()
     //view.webContents.openDevTools()
-    //webv.webContents.openDevTools()
+    //admin.webContents.openDevTools()
 
     // Emitted when the window is closed.
     win.on('closed', () => {
