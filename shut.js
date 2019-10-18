@@ -19,7 +19,7 @@ $(document).ready(function(){
     exec('shutdown now');
   });
   $("#market").click(function(){
-    ipcRenderer.send('adminURL-child', "http://www.gripelabs.com");
+    ipcRenderer.send('adminURL-child', "https://www.webdesk.me");
   });
   $("#cog").click(function(){
     ipcRenderer.send('adminURL-child', "https://www.webfra.me");
