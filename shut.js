@@ -19,7 +19,7 @@ $(document).ready(function(){
     exec('shutdown now');
   });
   $("#market").click(function(){
-    ipcRenderer.send('adminURL-child', "https://www.webdesk.me");
+    ipcRenderer.send('adminURL-child', "https://market.webdesk.me");
   });
   $("#cog").click(function(){
     ipcRenderer.send('adminURL-child', "https://www.webfra.me");
