@@ -59,6 +59,10 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
+    var wd_dir = wd_home + 'WWW/';
+    if (!fs.existsSync(wd_dir)) {
+      fs.mkdirSync(wd_dir);
+    }
     if (fs.existsSync(wd_home + 'Core/set.json')) {
           var file = fs.readFileSync(wd_home + 'Core/set.json');
           var obj = JSON.parse(file);
