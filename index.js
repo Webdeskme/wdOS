@@ -62,4 +62,5 @@ function checkTime(i) {
     return i;
 }
 startTime();
+$('[data-toggle="tooltip"]').tooltip();
 });
