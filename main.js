@@ -59,7 +59,6 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
-    fs.writeFileSync(wd_home + 'Core/set.json', '{"kioske": false, "height": 600, "width": 800, "frame": true}');
     if (fs.existsSync(wd_home + 'Core/set.json')) {
           var file = fs.readFileSync(wd_home + 'Core/set.json');
           var obj = JSON.parse(file);
@@ -69,10 +68,11 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
           var f = obj.frame;
         }
         else{
+          fs.writeFileSync(wd_home + 'Core/set.json', '{"kioske": false, "height": 600, "width": 800, "frame": true}');
           var w = 800;
           var h = 600;
-          var k = true;
-          var f = false;
+          var k = false;
+          var f = true;
         }
         if(k == true){
           w = width;
