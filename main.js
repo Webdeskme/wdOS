@@ -95,30 +95,42 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
   let webv3 = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: false, webviewTag: true}})
   let webv4 = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: false, webviewTag: true}})
 win.setBrowserView(view)
-wstart = width*0.04;
+//wstart = width*0.04;
+var contentWidth = win.innerWidth;
 var nheight = h - 30;
 //hstart = height*0.9;
 admin.setBounds({ x: 0, y: 80, width: w, height: nheight })
+admin.setAutoResize({width: true, height: true});
 admin.webContents.loadURL('file://' + __dirname + '/history.html')
 adminURL.setBounds({ x: 0, y: 80, width: w, height: nheight })
+adminURL.setAutoResize({width: true, height: true});
 adminURL.webContents.loadURL('https://www.webfra.me')
 help.setBounds({ x: 0, y: 80, width: w, height: nheight })
+help.setAutoResize({width: true, height: true});
 help.webContents.loadURL('file://' + __dirname + '/Help/index.html')
 view.setBounds({ x: 0, y: 80, width: w, height: nheight })
+view.setAutoResize({width: true, height: true});
 view.webContents.loadURL('file://' + __dirname + '/browser.html')
 view2.setBounds({ x: 0, y: 80, width: w, height: nheight })
+view2.setAutoResize({width: true, height: true});
 view2.webContents.loadURL('file://' + __dirname + '/browser.html')
 view3.setBounds({ x: 0, y: 80, width: w, height: nheight })
+view3.setAutoResize({width: true, height: true});
 view3.webContents.loadURL('file://' + __dirname + '/browser.html')
 view4.setBounds({ x: 0, y: 80, width: w, height: nheight })
+view4.setAutoResize({width: true, height: true});
 view4.webContents.loadURL('file://' + __dirname + '/browser.html')
 webv.setBounds({ x: 0, y: 80, width: w, height: nheight })
+webv.setAutoResize({width: true, height: true});
 webv.webContents.loadURL('https://duckduckgo.com/')
 webv2.setBounds({ x: 0, y: 80, width: w, height: nheight })
+webv2.setAutoResize({width: true, height: true});
 webv2.webContents.loadURL('https://duckduckgo.com/')
 webv3.setBounds({ x: 0, y: 80, width: w, height: nheight })
+webv3.setAutoResize({width: true, height: true});
 webv3.webContents.loadURL('https://duckduckgo.com/')
 webv4.setBounds({ x: 0, y: 80, width: w, height: nheight })
+webv4.setAutoResize({width: true, height: true});
 webv4.webContents.loadURL('https://duckduckgo.com/')
 
 //view.loadFile('browser.html')
