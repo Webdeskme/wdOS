@@ -16,14 +16,14 @@ $(document).ready(function(){
     var con = '{"kioske": ';
     con += $("#k").val();
     con += ', "height": ';
-    con += $("#h").val();
+    con += Math.max($("#h").val(), 400);
     con += ', "width": ';
-    con += $("#w").val();
+    con += Math.max($("#w").val(), 600);
     con += ', "frame": ';
     con += $("#f").val();
     con += '}';
     //con = JSON.stringify(con);
 	   fs.writeFileSync(wd_home + 'Core/set.json', con);
-	    alert("Status: Saved");
+	    alert("Status: Saved \n Note: Restart WebDektop to see your changes.");
   });
 });
