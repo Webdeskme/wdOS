@@ -34,6 +34,10 @@ $(document).ready(function(){
     //var sc = document.getElementById("search-con").value;
     ipcRenderer.send('admin-child', "file://" + __dirname + "/tabs.html");
   });
+  $("#b").click(function(){
+    //var sc = document.getElementById("search-con").value;
+    ipcRenderer.send('admin-child', "file://" + __dirname + "/broadcast.html");
+  });
   $("#browser").click(function(){
     ipcRenderer.send('show-child', "file://" + __dirname + "/browser.html");
   });
@@ -62,5 +66,5 @@ function checkTime(i) {
     return i;
 }
 startTime();
-$('[data-toggle="tooltip"]').tooltip();
+//$('[data-toggle="tooltip"]').tooltip();
 });
