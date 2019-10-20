@@ -4,9 +4,7 @@
   "description": "WebDesktop OS GUI.",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "build": "electron-packager . app --platform linux --arch x64 --out dist/",
-    "deb64": "electron-installer-debian --src dist/app-linux-x64/ --dest dist/installers/ --arch amd64"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -24,12 +22,9 @@
   },
   "homepage": "https://github.com/Webdeskme/wdOS#readme",
   "devDependencies": {
-    "electron": "^5.0.1",
-    "electron-installer-debian": "^2.0.1"
+    "electron": "^5.0.1"
   },
   "dependencies": {
-    "dat": "^13.13.0",
     "fs-extra": "^7.0.1",
-    "express": "^4.17.1"
   }
 }
