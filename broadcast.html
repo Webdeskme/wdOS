@@ -14,10 +14,12 @@
     </div>
     <div class="container">
       <div id="myip"></div>
+      <button id="wd_dir" class="btn btn-info">Open WWW</button>
+      <br><hr><br>
       <form>
         <div class="form-group">
-          <label for="port">Port:</label>
-          <input type="number" class="form-control" id="port">
+          <label for="port"><i class="fas fa-door-open"></i> Port: <i class="text-danger">(Min of 80)</i></label>
+          <input type="number" class="form-control" id="port" value="8080" placeholder="8080">
         </div>
         <div class="form-group">
           <label for="serv"><i class="fas fa-server"></i> Web Server:</label>
@@ -26,7 +28,7 @@
             <option value="off">Off</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" id="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
     <br><br><br><br>

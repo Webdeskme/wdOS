@@ -5,8 +5,20 @@ $(document).ready(function() {
   const {shell} = require('electron');
   const wd_homedir = require('os').homedir();
   var wd_dir = wd_homedir + '/Documents' + '/wdOS/WWW/';
+  if (fs.existsSync(wd_homedir + '/Documents/wdOS/Core/broad.json')) {
+    var file = fs.readFileSync(wd_homedir + '/Documents/wdOS/Core/broad.json');
+    var broad = JSON.parse(file);
+    var port = broad.port;
+    var serv = broad.serv;
+  }
+  else{
+    fs.writeFileSync(wd_homedir + '/Documents/wdOS/Core/broad.json', '{"port": 8080, "serv": "on"}');
+    var port = "8080";
+    var serv = "on";
+  }
+  if(serv == "on"){
   //document.getElementById("files").innerHTML = '<h3>Site Map:</h3><ul>';
-  var con = '<!DOCTYPE html><html><title>CastFrame</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><body><h3>Site Map:</h3><ul>';
+  var con = '<!DOCTYPE html><html><title>WebDesktop</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><body><h3>Site Map:</h3><ul>';
   files = fs.readdirSync(wd_dir);
   for (i = 0; i < files.length; i++) {
       if (fs.existsSync(wd_dir + files[i])) {
@@ -83,5 +95,6 @@ $(document).ready(function() {
       }
       }
       //myReadStream.pipe(res);
-  }).listen(8080);
+  }).listen(port);
+}
 });
