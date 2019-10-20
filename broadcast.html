@@ -13,8 +13,28 @@
       <h1>Broadcast</h1>
     </div>
     <div class="container">
-
+      <div id="myip"></div>
+      <form>
+        <div class="form-group">
+          <label for="port">Port:</label>
+          <input type="number" class="form-control" id="port">
+        </div>
+        <div class="form-group">
+          <label for="serv"><i class="fas fa-server"></i> Web Server:</label>
+          <select class="form-control" id="serv">
+            <option value="on">On</option>
+            <option value="off">Off</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
     <br><br><br><br>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="Plugins/jquery.min.js"></script>
+    <script src="Plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="Plugins/fontawesome/js/all.js"></script>
+    <script src="broadcast.js"></script>
+    <script>if (window.module) module = window.module;</script>
   </body>
 </html>
