@@ -12,6 +12,7 @@ $(document).ready(function(){
   $("#w").val(set.width);
   $("#h").val(set.height);
   $("#f option[value=" + set.frame + "]").prop('selected', true);
+  $("#d option[value=" + set.dev + "]").prop('selected', true);
   $("#submit").click(function(){
     var con = '{"kioske": ';
     con += $("#k").val();
@@ -21,7 +22,9 @@ $(document).ready(function(){
     con += Math.max($("#w").val(), 600);
     con += ', "frame": ';
     con += $("#f").val();
-    con += '}';
+    con += ', "dev": "';
+    con += $("#d").val();
+    con += '"}';
     //con = JSON.stringify(con);
 	   fs.writeFileSync(wd_home + 'Core/set.json', con);
 	    alert("Status: Saved \n Note: Restart WebDektop to see your changes.");

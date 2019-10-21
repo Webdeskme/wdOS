@@ -4,12 +4,21 @@
   "description": "WebDesktop OS GUI.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -l"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Webdeskme/wdOS.git"
   },
+    "build": {
+        "appId": "WebDesktop",
+        "productName": "WebDesktop",
+        "mac": {
+            "category": "WebDesktop.Utility"
+        }
+},
   "keywords": [
     "WebDesktop",
     "wdOS",
@@ -22,9 +31,10 @@
   },
   "homepage": "https://github.com/Webdeskme/wdOS#readme",
   "devDependencies": {
-    "electron": "^5.0.1"
+    "electron": "^5.0.1",
+    "electron-builder": "^21.2.0"
   },
   "dependencies": {
-    "fs-extra": "^7.0.1",
+    "fs-extra": "^7.0.1"
   }
 }
