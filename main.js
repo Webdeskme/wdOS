@@ -73,19 +73,24 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
           var d = obj.dev;
         }
         else{
-          fs.writeFileSync(wd_home + 'Core/set.json', '{"kioske": false, "height": 600, "width": 800, "frame": true, "dev": "off"}');
+          fs.writeFileSync(wd_home + 'Core/set.json', '{"kioske": "c", "height": 600, "width": 800, "frame": true, "dev": "off"}');
           var w = 800;
           var h = 600;
-          var k = false;
+          var k = "c";
           var f = true;
           var d = "off";
         }
-        if(k == true){
+        if(k == "k"){
+          var kiosk = true;
+          w = width;
+          h = height;
+        }
+        else if(k == "f"){
           w = width;
           h = height;
         }
     // Create the browser window.
-    win = new BrowserWindow({width: w, height: h, frame: f, backgroundColor: '#2e2c29', kiosk: k, webPreferences: {
+    win = new BrowserWindow({width: w, height: h, frame: f, backgroundColor: '#2e2c29', kiosk: kiosk, webPreferences: {
     nodeIntegration: true
   }})
     //let child = new BrowserWindow({ parent: win, modal: false, show: false, width: 800, height: 600, webPreferences: {nodeIntegration: true}})

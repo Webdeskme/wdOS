@@ -14,9 +14,9 @@ $(document).ready(function(){
   $("#f option[value=" + set.frame + "]").prop('selected', true);
   $("#d option[value=" + set.dev + "]").prop('selected', true);
   $("#submit").click(function(){
-    var con = '{"kioske": ';
+    var con = '{"kioske": "';
     con += $("#k").val();
-    con += ', "height": ';
+    con += '", "height": ';
     con += Math.max($("#h").val(), 400);
     con += ', "width": ';
     con += Math.max($("#w").val(), 600);
