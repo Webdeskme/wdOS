@@ -19,15 +19,15 @@ $(document).ready(function(){
     exec('shutdown now');
   });
   $("#market").click(function(){
-    ipcRenderer.send('adminURL-child', "https://market.webdesk.me");
+    ipcRenderer.send('show-child', "https://market.webdesk.me");
   });
   $("#cog").click(function(){
-    ipcRenderer.send('adminURL-child', "https://www.webfra.me");
+    ipcRenderer.send('show-child', "https://www.webfra.me");
   });
   $("#help").click(function(){
-    ipcRenderer.send('help-child', "file://" + __dirname + "/Help/index.html");
+    ipcRenderer.send('show-child', "file://" + __dirname + "/Help/index.html");
   });
   $("#set").click(function(){
-    ipcRenderer.send('admin-child', "file://" + __dirname + "/set.html");
+    ipcRenderer.send('show-child', "file://" + __dirname + "/set.html");
   });
 });

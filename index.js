@@ -24,26 +24,26 @@ $(document).ready(function(){
   }*/
   var window = remote.getCurrentWindow();
   $("#shut").click(function(){
-    ipcRenderer.send('admin-child', "file://" + __dirname + "/shut.html");
+    ipcRenderer.send('show-child', "file://" + __dirname + "/shut.html");
   });
   $("#search").click(function(){
     //var sc = document.getElementById("search-con").value;
-    ipcRenderer.send('show-url', "https://duckduckgo.com/");
+    ipcRenderer.send('show-child', "https://duckduckgo.com/");
   });
   $("#p").click(function(){
     //var sc = document.getElementById("search-con").value;
-    ipcRenderer.send('admin-child', "file://" + __dirname + "/tabs.html");
+    ipcRenderer.send('show-child', "file://" + __dirname + "/tabs.html");
   });
   $("#b").click(function(){
     //var sc = document.getElementById("search-con").value;
-    ipcRenderer.send('admin-child', "file://" + __dirname + "/broadcast.html");
+    ipcRenderer.send('show-child', "file://" + __dirname + "/broadcast.html");
   });
   $("#browser").click(function(){
     ipcRenderer.send('show-child', "file://" + __dirname + "/browser.html");
   });
-  $("#wd_time").click(function(){
-    ipcRenderer.send('admin-child', "file://" + __dirname + "/history.html");
-  });
+  //$("#wd_time").click(function(){
+  //  ipcRenderer.send('show-child', "file://" + __dirname + "/history.html");
+  //});
   function startTime() {
     var today = new Date();
     var h = today.getHours();
