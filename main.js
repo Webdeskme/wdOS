@@ -43,6 +43,10 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize
     var fs = require('fs-extra');
     const wd_homedir = require('os').homedir();
+    var wd_home = wd_homedir + '/Documents/';
+    if (!fs.existsSync(wd_home)) {
+      fs.mkdirSync(wd_home);
+    }
     var wd_home = wd_homedir + '/Documents/wdOS/';
     if (!fs.existsSync(wd_home)) {
       fs.mkdirSync(wd_home);
@@ -63,7 +67,7 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
-    fs.copy('Examples/Sample', wd_home + 'App/Sample');
+    fs.copy('file://' + __dirname + '/Examples/Sample', wd_home + 'App/Sample');
     if (fs.existsSync(wd_home + 'Core/set.json')) {
           var file = fs.readFileSync(wd_home + 'Core/set.json');
           var obj = JSON.parse(file);
