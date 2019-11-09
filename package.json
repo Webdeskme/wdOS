@@ -1,7 +1,7 @@
 {
   "name": "wdos",
-  "version": "1.0.0",
-  "description": "WebDesktop OS GUI.",
+  "version": "1.0.1",
+  "description": "WebDesktop make apps with just a text editor and nodejs.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -12,19 +12,50 @@
     "type": "git",
     "url": "git+https://github.com/Webdeskme/wdOS.git"
   },
-    "build": {
-        "appId": "WebDesktop",
-        "productName": "WebDesktop",
-        "mac": {
-            "category": "WebDesktop.Utility"
-        }
-},
+  "build": {
+    "appId": "WebDesktop",
+    "productName": "WebDesktop",
+    "asar": true,
+    "copyright": "©2019 WebFrame, Inc.",
+    "mac": {
+      "category": "WebDesktop.Utility"
+    },
+    "linux": {
+      "icon": "icon.icns",
+      "target": [
+        "AppImage",
+        "deb",
+        "snap",
+        "rpm",
+        "freebsd",
+        "apk",
+        "7z",
+        "zip",
+        "tar.xz",
+        "tar.lz",
+        "tar.gz",
+        "tar.bz2"
+      ],
+      "category": "Utility",
+      "packageCategory": "Utility"
+    },
+    "deb": {
+      "synopsis": "WebDesktop"
+    },
+    "snap": {
+      "synopsis": "WebDesktop"
+    }
+  },
   "keywords": [
     "WebDesktop",
     "wdOS",
     "WebFrame"
   ],
-  "author": "WebFrame",
+  "author": {
+    "name": "Adam Telford",
+    "email": "atelford@webdesk.me",
+    "url": "https://www.webfra.me/"
+  },
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Webdeskme/wdOS/issues"
@@ -35,6 +66,21 @@
     "electron-builder": "^21.2.0"
   },
   "dependencies": {
-    "fs-extra": "^7.0.1"
+    "angular": "^1.7.8",
+    "bootstrap": "^4.3.1",
+    "dat": "^13.13.1",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "fs-extra": "^7.0.1",
+    "jquery": "^3.4.1",
+    "jshint": "^2.10.3",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "phaser": "^3.20.1",
+    "popper.js": "^1.16.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.11.0",
+    "tslib": "^1.10.0",
+    "vue": "^2.6.10"
   }
 }

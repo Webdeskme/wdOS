@@ -67,7 +67,7 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
-    fs.copy('file://' + __dirname + '/Examples/Sample', wd_home + 'App/Sample');
+    fs.copy(__dirname + '/Examples/Sample', wd_home + 'App/Sample');
     if (fs.existsSync(wd_home + 'Core/set.json')) {
           var file = fs.readFileSync(wd_home + 'Core/set.json');
           var obj = JSON.parse(file);
@@ -97,7 +97,7 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     // Create the browser window.
     win = new BrowserWindow({width: w, height: h, frame: f, backgroundColor: '#2e2c29', kiosk: kiosk, webPreferences: {
     nodeIntegration: true
-  }})
+  },icon: __dirname + '/icon.png'})
     //let child = new BrowserWindow({ parent: win, modal: false, show: false, width: 800, height: 600, webPreferences: {nodeIntegration: true}})
   let admin = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: true, webviewTag: true}})
   let adminURL = new BrowserView({backgroundColor: '#2e2c29', webPreferences: {nodeIntegration: false, webviewTag: true}})
@@ -113,7 +113,7 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
 win.setBrowserView(view)
 //wstart = width*0.04;
 var contentWidth = win.innerWidth;
-var nheight = h - 30;
+var nheight = h - 90;
 //hstart = height*0.9;
 admin.setBounds({ x: 0, y: 80, width: w, height: nheight })
 admin.setAutoResize({width: true, height: true});
