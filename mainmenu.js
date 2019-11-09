@@ -88,7 +88,7 @@ const template = [
     submenu: [
       {
         label: 'Learn More',
-        click () { require('electron').shell.openExternal('https://github.com/WebDesk-me/WebDesk-top/wiki') }
+        click () { require('electron').shell.openExternal('https://github.com/Webdeskme/wdOS/wiki') }
       }
     ]
   }
