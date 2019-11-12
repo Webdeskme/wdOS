@@ -23,14 +23,49 @@
   <br>
   <div class="card bg-warning">
     <button class="btn btn-outline-light" id="sf">System Files</button>
+    <button class="btn btn-outline-light" id="ma" data-toggle="modal" data-target="#myModal">Make an App</button>
   </div>
   <br>
   <div class="card bg-info">
-    <button class="btn btn-outline-light" id="cog">Cog&Wheel</button>
+    <button class="btn btn-outline-light" id="cog">WebDesk.me</button>
   </div>
   <div class="card bg-dark text-light text-center">
     <h2>Version: 1.0 GPL_3.0</h2>
   </div>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Make an App</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="/action_page.php">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" placeholder="BestApp" required>
+            </div>
+            <div class="form-group">
+                <label for="des">Description:</label>
+                <textarea class="form-control" id="des" placeholder="This app is the best because ..." required></textarea>
+            </div>
+            <button type="submit" id="cma" class="btn btn-success" data-dismiss="modal">Create</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="Plugins/jquery.min.js"></script>
   <script src="Plugins/bootstrap/dist/js/bootstrap.min.js"></script>
