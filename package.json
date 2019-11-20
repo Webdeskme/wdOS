@@ -66,7 +66,7 @@
     "electron-builder": "^21.2.0"
   },
   "dependencies": {
-    "angular": "^1.7.8",
+    "angular": "^1.7.9",
     "bootstrap": "^4.3.1",
     "dat": "^13.13.1",
     "debug": "^4.1.1",
