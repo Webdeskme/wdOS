@@ -9,6 +9,9 @@ $(document).ready(function(){
   $("#sf").click(function(){
     shell.openItem(wd_home);
   });
+  $("#oa").click(function(){
+    shell.openItem(wd_home + 'App/');
+  });
   $("#lock").click(function(){
     exec('dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock');
   });
