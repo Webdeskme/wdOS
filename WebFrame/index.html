@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebFrame</title>
+    <link rel="stylesheet" href="../Plugins/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../Plugins/jquery.min.js"></script>
+    <script src="../Plugins/popper.min.js"></script>
+    <script src="../Plugins/bootstrap/dist/js/bootstrap.min.js">
+    </script>
+    <style>
+      body {
+        background-image: url(Plugins/back.jpg);
+        background-position: center top;
+        background-size: 100% auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-dark text-center">
+      <img src="../Plugins/WebDesk.png" style="width: 50%;" alt="WebDesk">
+    </div>
+    <br><br>
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <label for="user">Username:</label>
+          <input type="text" class="form-control" id="user" placeholder="Bob">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="abc123!">
+        </div>
+        <button type="button" id="login" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

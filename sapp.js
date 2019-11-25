@@ -64,15 +64,22 @@ web.use(express.urlencoded({extended: true}));
 
 m.use("/", express.static(dh_homedir + '/Documents/wdOS/App'));
 m.use("/Plugins", express.static( __dirname + '/Plugins'));
+m.use("/WebFrame", express.static( __dirname + '/WebFrame'));
 m.get('/', function (req, res) {
    res.send(con + '</div></body></html>');
-})
+});
 m.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
 web.use("/", express.static(dh_homedir + '/Documents/wdOS/WWW'));
 web.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
+});
+m.post('/login', function(req, res) {
+    var user = req.body.user;
+    var pwd = req.body.pwd;
+    res.send(user);
+    //res.send('{"' + user + '":"' + pwd + '"}');
 });
 if(serv == "on"){
 var server = m.listen(4000, function () {
