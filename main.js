@@ -75,6 +75,10 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
+    var wd_dir = wd_home + 'Core/dh_hull';
+    if (!fs.existsSync(wd_dir)) {
+      fs.mkdirSync(wd_dir);
+    }
     if (!fs.existsSync(wd_home + 'App/Sample')) {
       fs.copy(__dirname + '/Examples/Sample', wd_home + 'App/Sample');
     }
@@ -105,7 +109,7 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
           h = height;
         }
         // init ports //
-        var por = 4002;
+        var por = 4003;
         var pin = '';
         files = fs.readdirSync(wd_home + 'App/');
         for (i = 0; i < files.length; i++) {
