@@ -4,7 +4,7 @@ $(document).ready(function() {
   var fs = require('fs');
   const {shell} = require('electron');
   const wd_homedir = require('os').homedir();
-  var wd_dir = wd_homedir + '/Documents' + '/wdOS/WWW/';
+  var wd_dir = wd_homedir + '/Documents' + '/wdOS/Cast/';
   if (fs.existsSync(wd_homedir + '/Documents/wdOS/Core/broad.json')) {
     var file = fs.readFileSync(wd_homedir + '/Documents/wdOS/Core/broad.json');
     var broad = JSON.parse(file);
@@ -95,6 +95,6 @@ $(document).ready(function() {
       }
       }
       //myReadStream.pipe(res);
-  }).listen(port);
+  }).listen(4001);
 }
 });

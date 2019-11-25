@@ -67,7 +67,21 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
-    fs.copy(__dirname + '/Examples/Sample', wd_home + 'App/Sample');
+    var wd_dir = wd_home + 'Cast/';
+    if (!fs.existsSync(wd_dir)) {
+      fs.mkdirSync(wd_dir);
+    }
+    var wd_dir = wd_home + 'Logs/';
+    if (!fs.existsSync(wd_dir)) {
+      fs.mkdirSync(wd_dir);
+    }
+    var wd_dir = wd_home + 'Core/dh_hull';
+    if (!fs.existsSync(wd_dir)) {
+      fs.mkdirSync(wd_dir);
+    }
+    if (!fs.existsSync(wd_home + 'App/Sample')) {
+      fs.copy(__dirname + '/Examples/Sample', wd_home + 'App/Sample');
+    }
     if (fs.existsSync(wd_home + 'Core/set.json')) {
           var file = fs.readFileSync(wd_home + 'Core/set.json');
           var obj = JSON.parse(file);
@@ -94,6 +108,23 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
           w = width;
           h = height;
         }
+        // init ports //
+        var por = 4003;
+        var pin = '';
+        files = fs.readdirSync(wd_home + 'App/');
+        for (i = 0; i < files.length; i++) {
+          //console.log(files[i]);
+          if (fs.existsSync(wd_home + 'App/' + files[i] + '/index.html')) {
+            var file = fs.readFileSync(wd_home + 'App/' + files[i] + '/wd.json');
+            var obj = JSON.parse(file);
+            if(obj.ser == "on"){
+              pin = pin + '"' + files[i] + '":"' + por + '",';
+              por = por + 1;
+            }
+          }
+        }
+        pin = pin.replace(/,\s*$/, "");
+        fs.writeFileSync(wd_home + 'Core/pin.json', '{' + pin + '}');
     // Create the browser window.
     win = new BrowserWindow({width: w, height: h, frame: f, backgroundColor: '#2e2c29', kiosk: kiosk, webPreferences: {
     nodeIntegration: true
