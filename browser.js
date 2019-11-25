@@ -1,4 +1,30 @@
+var request = require('request');
 $(document).ready(function(){
+  /*$("button").click(function(){
+    console.log("test");
+
+/*request.post(
+    'http://192.168.2.13:4002/login',
+    { form: { user:'Donal Duck',pwd:'12345'  } },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+            alert(body);
+        }
+    }
+);*/
+    /*$.get("192.168.2.13:4002/get?id=adam&token=12345&geo=us", function(data, status){
+    console.log("Data: " + data + "\nStatus: " + status);
+  });*/
+  /*$.post("http://192.168.2.13:4002/login",
+  {
+    user: "Donald Duck",
+    pwd: "Duckburg"
+  },
+  function(data, status){
+    console.log("Data: " + data + "\nStatus: " + status);
+  });
+});*/
   const remote = require('electron').remote;
   const {ipcRenderer} = require('electron');
   var fs = require('fs');

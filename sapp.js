@@ -26,7 +26,7 @@ var file = fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/pin.json');
 var p = JSON.parse(file);
 var x = 1;
 var app = {};
-var con = '<!DOCTYPE html><html><head><title>wdOS</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script><style>body {background-image: url(Plugins/back.jpg); background-position: center top; background-size: 100% auto;}</style></head><body><div class="bg-dark text-center"><img src="Plugins/WebDesk.png" style="width: 50%;" alt="WebDesk"></div><br><br><div id="app" class="row container">';
+var con = '<!DOCTYPE html><html><head><title>wdOS</title><link rel="stylesheet" href="Plugins/bootstrap/dist/css/bootstrap.min.css"><script src="Plugins/jquery.min.js"></script><script src="Plugins/popper.min.js"></script><script src="Plugins/bootstrap/dist/js/bootstrap.min.js"></script><style>body {background-image: url(Plugins/back.jpg); background-position: center top; background-size: 100% auto;}</style></head><body><div class="bg-dark text-center"><img src="Plugins/WebDesk.png" style="width: 50%;" alt="WebDesk"></div><br><br><div id="app" class="row container">';
 for (var key in p) {
     if (p.hasOwnProperty(key)) {
         app['s' + x] = express();
@@ -62,11 +62,11 @@ web.use(express.urlencoded({extended: true}));
     //app.use("/tb_www/", express.static(dh_www + 'tb_www/'));
   // Change the 404 message modifing the middleware
 
+m.use("/", express.static(dh_homedir + '/Documents/wdOS/App'));
+m.use("/Plugins", express.static( __dirname + '/Plugins'));
 m.get('/', function (req, res) {
    res.send(con + '</div></body></html>');
 })
-m.use("/", express.static(dh_homedir + '/Documents/wdOS/App'));
-m.use("/Plugins", express.static( __dirname + '/Plugins'));
 m.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
