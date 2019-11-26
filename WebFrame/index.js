@@ -22,7 +22,7 @@ $(document).ready(function(){
         }
     });
 
-    
+
     $.ajax({
       type: 'POST',
       url: url,
@@ -31,7 +31,7 @@ $(document).ready(function(){
       dataType: dataType,
       async:false
     });*/
-    $.post("http://192.168.2.13:4002/login",
+    $.post("http://127.0.0.1:4002/login",
   {
     user: userl,
     pwd: pwdl

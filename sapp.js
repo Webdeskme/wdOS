@@ -64,7 +64,11 @@ web.use(express.urlencoded({extended: true}));
 
 m.use("/", express.static(dh_homedir + '/Documents/wdOS/App'));
 m.use("/Plugins", express.static( __dirname + '/Plugins'));
+m.use("/apps", express.static(dh_homedir + '/Documents/wdOS/WebFrame'));
 m.use("/WebFrame", express.static( __dirname + '/WebFrame'));
+m.get('/WebFrame/apps.html', function (req, res) {
+   res.send('test');
+});
 m.get('/', function (req, res) {
    res.send(con + '</div></body></html>');
 });

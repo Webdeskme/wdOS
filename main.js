@@ -75,6 +75,10 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
+    var wd_dir = wd_home + 'WebFrame/';
+    if (!fs.existsSync(wd_dir)) {
+      fs.mkdirSync(wd_dir);
+    }
     var wd_dir = wd_home + 'Core/dh_hull';
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
