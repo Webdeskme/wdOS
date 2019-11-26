@@ -14,10 +14,26 @@ else{
     }
     else{
       // our code goes here //
-
-      $("#head").load("../apps/Test/header.html");
-      $("#app").load("../apps/Test/test.html");
-      $("#foot").load("../apps/Test/footer.html");
+      const urlParams = new URLSearchParams(window.location.search);
+      const app = urlParams.get('app');
+      const sec = urlParams.get('sec');
+      if (typeof app !== 'undefined') {
+        if (typeof sec !== 'undefined') {
+          $("#head").load("../apps/" + app + "/header.html");
+          $("#app").load("../apps/" + app + "/" + sec + ".html");
+          $("#foot").load("../apps/" + app + "/footer.html");
+        }
+        else{
+          $("#head").load("../apps/" + app + "/header.html");
+          $("#app").load("../apps/" + app + "/index.html");
+          $("#foot").load("../apps/" + app + "/footer.html");
+        }
+      }
+      else{
+          $("#head").html("<b>Choose an App:</b>");
+          $("#app").html("<p>Use the navebar to select an app.</p>");
+          $("#foot").html("");
+      }
     }
   });
 }
