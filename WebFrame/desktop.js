@@ -17,8 +17,9 @@ else{
       const urlParams = new URLSearchParams(window.location.search);
       const app = urlParams.get('app');
       const sec = urlParams.get('sec');
-      if (typeof app !== 'undefined') {
-        if (typeof sec !== 'undefined') {
+      //alert(app);
+      if (app != null && app != "") {
+        if (sec != null && app != "") {
           $("#head").load("../apps/" + app + "/header.html");
           $("#app").load("../apps/" + app + "/" + sec + ".html");
           $("#foot").load("../apps/" + app + "/footer.html");
@@ -30,9 +31,10 @@ else{
         }
       }
       else{
-          $("#head").html("<b>Choose an App:</b>");
-          $("#app").html("<p>Use the navebar to select an app.</p>");
-          $("#foot").html("");
+          //$("#head").html("<b>Choose an App:</b>");
+          $("#app").load("apps.html");
+          //$("#foot").html("");
+          //alert('hi');
       }
     }
   });

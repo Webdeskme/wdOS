@@ -62,12 +62,18 @@ web.use(express.urlencoded({extended: true}));
     //app.use("/tb_www/", express.static(dh_www + 'tb_www/'));
   // Change the 404 message modifing the middleware
 
+  var cona = '<style>body {background-image: url(../Plugins/back.jpg); background-position: center top; background-size: 100% auto;}</style><div class="jumbotron text-center"><h1>My Apps</h1></div><div class="container"><ul class="list-group">';
+  files = fs.readdirSync(dh_homedir + '/Documents/wdOS/WebFrame');
+  for (i = 0; i < files.length; i++) {
+    cona = cona + '<a href="desktop.html?app=' + files[i] + '&sec=index" class="list-group-item list-group-item-action">' + files[i] + '</a>';
+  }
+  cona = cona + '</ul></div>';
 m.use("/", express.static(dh_homedir + '/Documents/wdOS/App'));
 m.use("/Plugins", express.static( __dirname + '/Plugins'));
 m.use("/apps", express.static(dh_homedir + '/Documents/wdOS/WebFrame'));
 m.use("/WebFrame", express.static( __dirname + '/WebFrame'));
 m.get('/WebFrame/apps.html', function (req, res) {
-   res.send('test');
+   res.send(cona);
 });
 m.get('/', function (req, res) {
    res.send(con + '</div></body></html>');
