@@ -4,6 +4,22 @@ $(document).ready(function(){
     var pwdl = $('#pwd').val();
     /*
 
+
+
+    $.ajax({
+                async: false,
+                type: "POST",
+                url: "Default.aspx/GetCurrentTime",
+                data: '{name: "Mudassar" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert(response.d);
+                }
+            });
+
+
+
     var  formData = "name=ravi&age=31";  //Name value Pair
         or
     var formData = {name:"ravi",age:"31"}; //Array
