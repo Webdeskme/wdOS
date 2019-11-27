@@ -30,10 +30,10 @@ $(document).ready(function(){
   $("#cma").click(function(){
     var title = $("#title").val();
     var des= $("#des").val();
-    var ser= $("#ser").val();
+    var ser= $("#serv").val();
     if (!fs.existsSync(wd_home + 'App/' + title + '/')) {
       fs.mkdirSync(wd_home + 'App/' + title + '/');
-      fs.writeFileSync(wd_home + 'App/' + title + '/wd.json', '{"name":"' + title + '", "dec":"' + des + '","ser":' + ser + '}');
+      fs.writeFileSync(wd_home + 'App/' + title + '/wd.json', '{"name":"' + title + '", "dec":"' + des + '","ser":"' + ser + '"}');
       fs.copy(__dirname + '/Examples/Sample/ic.png', wd_home + 'App/' + title + '/ic.png');
       fs.copy(__dirname + '/Examples/Sample/index.html', wd_home + 'App/' + title + '/index.html');
       shell.openItem(wd_home + 'App/');
