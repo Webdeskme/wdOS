@@ -79,7 +79,11 @@ if (fs.existsSync(wd_home + '/Core/set.json')) {
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
-    var wd_dir = wd_home + 'Core/dh_hull';
+    var wd_dir = wd_home + 'Core/dh_hull/';
+    if (!fs.existsSync(wd_dir)) {
+      fs.mkdirSync(wd_dir);
+    }
+    var wd_dir = wd_home + 'Core/dh_hull/Account/';
     if (!fs.existsSync(wd_dir)) {
       fs.mkdirSync(wd_dir);
     }
