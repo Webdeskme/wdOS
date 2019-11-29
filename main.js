@@ -207,7 +207,7 @@ webv4.webContents.loadURL('https://duckduckgo.com/')
       view.webContents.openDevTools()
     }
     //view.webContents.openDevTools()
-    //admin.webContents.openDevTools()
+    admin.webContents.openDevTools()
 
     // Emitted when the window is closed.
     win.on('closed', () => {
