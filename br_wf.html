@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DeskHull</title>
+    <title>WebFrame</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="Plugins/bootstrap/dist/css/bootstrap.min.css">
@@ -10,28 +10,25 @@
   </head>
   <body>
     <div class="text-center">
-      <h1>DeskHull</h1>
+      <h1>WebFrame</h1>
     </div>
     <div class="container">
 	<form>
-		<h3>New Account:</h3>
-		<p>(You must have at least one account to use DeskHull api)</p>
+		<h3>Add your DeskHull creds:</h3>
 		<div class="form-group">
-    			<label for="ac">Account Name:</label>
-    			<input type="text" class="form-control" id="ac" placeholder="Account Name">
+    			<label for="url">DeskHull URL:</label>
+    			<input type="url" class="form-control" id="url" placeholder="DeskHull URL">
   		</div>
   		<div class="form-group">
-    			<label for="user">Admin UserName:</label>
+    			<label for="user">DeskHull Account Admin UserName:</label>
     			<input type="text" class="form-control" id="user" placeholder="Admin UserName">
   		</div>
 		<div class="form-group">
     			<label for="pwd">Password:</label>
     			<input type="password" class="form-control" id="pwd" placeholder="Password">
   		</div>
-		  <button type="submit" class="btn btn-primary">Create</button>
+		  <button type="submit" class="btn btn-primary">Connect</button>
 	</form>
-	<br><hr><br>
-	<h3>My Accounts</h3>
     </div>
     <br><br><br><br>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
