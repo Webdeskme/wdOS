@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Page Title</title>
+    <title>Broadcast</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="Plugins/bootstrap/dist/css/bootstrap.min.css">
@@ -16,15 +16,10 @@
       <div id="myip"></div>
       <div id="cmyip"></div>
       <div id="amyip"></div>
-      <button id="wd_dir" class="btn btn-info">Open WWW</button> <button id="wd_cast" class="btn btn-info">Open Cast</button>
-      <br><hr><br>
+      <br>
       <form>
         <div class="form-group">
-          <label for="port"><i class="fas fa-door-open"></i> WWW Port: <i class="text-danger">(Min of 80)</i></label>
-          <input type="number" class="form-control" id="port" value="8080" placeholder="8080">
-        </div>
-        <div class="form-group">
-          <label for="serv"><i class="fas fa-server"></i> Web Server:</label>
+          <label for="serv"><i class="fas fa-server"></i> Web Servers:</label>
           <select class="form-control" id="serv">
             <option value="on">On</option>
             <option value="off">Off</option>
@@ -32,6 +27,14 @@
         </div>
         <button type="button" id="submit" class="btn btn-primary">Submit</button>
       </form>
+      <br><hr><br>
+      <div class="list-group">
+		<a href="br_www.html" class="list-group-item list-group-item-action">WWW</a>
+		<a href="br_wa.html" class="list-group-item list-group-item-action">Web Apps</a>
+		<a href="br_hull.html" class="list-group-item list-group-item-action">DeskHull</a>
+		<a href="br_wf.html" class="list-group-item list-group-item-action">WebFrame</a>
+		<a href="br_cast.html" class="list-group-item list-group-item-action">Cast</a>
+	  </div>
     </div>
     <br><br><br><br>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
