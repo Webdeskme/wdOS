@@ -1,3 +1,6 @@
+var fs = require('fs');
+const dh = require('os').homedir();
+var wf_dir = dh + '/Documents/wdOS/Core/webframe.txt';
 $(document).ready(function(){
 	$("#submit").click(function(){
 		var url = $('#url').val();
@@ -11,8 +14,9 @@ $(document).ready(function(){
 				ac: ac
 			},
 			function(data, status){
+			fs.writeFileSync(wf_dir, data);
 			console.log("Data: " + data + "\nStatus: " + status);
-			alert("Data: " + data);
+			alert(data);
 		});
 	});
 });

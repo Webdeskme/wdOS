@@ -27,24 +27,28 @@ db.post('/active', function(req, res) {
     var pwd = req.body.pwd;
     pwd = SHA256(pwd);
 		pwd = pwd.toString();
-    if(user == obj[ac]["user"] && pwd == obj[ac]["pwd"]){
+    if (typeof obj.ac !== 'undefined') {
+    if(user === obj[ac]["user"] && pwd === obj[ac]["pwd"]){
       var items = Array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9");
-		for (i = 0; i < 63; i++) {
+		var key = "";
+    for (i = 0; i < 63; i++) {
 		        	var item = items[Math.floor(Math.random()*items.length)];
 		        	key += item;
 			}
-      obj[ac]["key"] = key;
+      ekey = SHA256(key);
+      ekey = ekey.toString();
+      obj[ac]["key"] = ekey;
       var json = JSON.stringify (obj);
-      fs.writeFileSync(wd_home + 'ac.json', json);
-      key = SHA256(key);
+      fs.writeFileSync(dh_dir + 'ac.json', json);
       res.send(key);
     }
     else{
       res.send('bad');
     }
-  });
+  }
+  }
 });
-db.post('/login', function(req, res) {
+/*db.post('/login', function(req, res) {
     var user = req.body.user;
     var pwd = req.body.pwd;
     if(user == 'adam' && pwd == '12345'){
@@ -78,7 +82,7 @@ db.post('/post', function(req, res) {
     var geo = req.body.geo;
 
     res.send(key + ' ' + user_id + ' ' + token + ' ' + geo);
-});
+});*/
 db.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
