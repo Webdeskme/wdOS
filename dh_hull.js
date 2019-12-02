@@ -20,14 +20,14 @@ db.get('/', function (req, res) {
     res.send('Welcome to the WebDesk api please login to get started or check out our documintation.');
 });
 db.post('/active', function(req, res) {
-  if(fs.existsSync(dh_dir)){
+  if(fs.existsSync(dh_dir + 'ac.json')){
 		var obj = JSON.parse(fs.readFileSync(dh_dir + 'ac.json', 'utf8'));
     var ac = req.body.ac;
     var user = req.body.user;
     var pwd = req.body.pwd;
     pwd = SHA256(pwd);
 		pwd = pwd.toString();
-    if (typeof obj.ac !== 'undefined') {
+    if (typeof obj[ac] !== 'undefined') {
     if(user === obj[ac]["user"] && pwd === obj[ac]["pwd"]){
       var items = Array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9");
 		var key = "";
@@ -46,19 +46,62 @@ db.post('/active', function(req, res) {
       res.send('bad');
     }
   }
+  else{
+    res.send('Account is not defined');
+  }
+  }
+  else{
+    res.send('Deskhull is not setup on this system');
   }
 });
-/*db.post('/login', function(req, res) {
+db.post('/login', function(req, res) {
+  if(fs.existsSync(dh_dir + 'ac.json')){
+    var ac = req.body.ac;
+    var key = req.body.key;
     var user = req.body.user;
     var pwd = req.body.pwd;
-    if(user == 'adam' && pwd == '12345'){
-      res.send('afbshjklfb');
-    }
-    else{
+    var obj = JSON.parse(fs.readFileSync(dh_dir + 'ac.json', 'utf8'));
+    key = SHA256(key);
+		key = key.toString();
+    if (typeof obj[ac] !== 'undefined') {
+    if(key === obj[ac]["key"]){
+      pwd = SHA256(pwd);
+      pwd = pwd.toString();
+      var obju = JSON.parse(fs.readFileSync(dh_dir + 'Account/' + ac + '/user.json', 'utf8'));
+      if(pwd === obju[user]["pwd"]){
+        var items = Array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9");
+		var token = "";
+    for (i = 0; i < 63; i++) {
+		        	var item = items[Math.floor(Math.random()*items.length)];
+		        	token += item;
+			}
+      etoken = SHA256(token);
+      etoken = etoken.toString();
+      obju[user]["token"] = etoken;
+      var jsonu = JSON.stringify (obju);
+      fs.writeFileSync(dh_dir + 'Account/' + ac + '/user.json', jsonu);
+      res.send(token);
+      }
+      else{
       res.send('bad');
     }
+  }
+  else{
+      res.send('bad key');
+    }
+}
+else{
+    res.send('Account is not defined');
+  }
+  }
+  else{
+    res.send('Deskhull is not setup on this system');
+  }
 });
-db.post('/check', function(req, res) {
+db.post('/post', function(req, res) {
+  res.send('Stuff here.');
+});
+/*db.post('/check', function(req, res) {
   var test = req.body.token;
   if(test == 'afbshjklfb'){
     res.send('yes');
