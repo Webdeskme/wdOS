@@ -99,17 +99,97 @@ else{
   }
 });
 db.post('/post', function(req, res) {
-  res.send('Stuff here.');
+	if(fs.existsSync(dh_dir + 'ac.json')){
+		var ac = req.body.ac;
+		var key = req.body.key;
+		var obj = JSON.parse(fs.readFileSync(dh_dir + 'ac.json', 'utf8'));
+		key = SHA256(key);
+		key = key.toString();
+		if (typeof obj[ac] !== 'undefined') {
+			if(key === obj[ac]["key"]){
+				var user = req.body.user;
+				var token = req.body.token;
+				var us = JSON.parse(fs.readFileSync(dh_dir + 'Account/' + ac + '/user.json', 'utf8'));
+				token = SHA256(token);
+				token = token.toString();
+				if (typeof us[user] !== 'undefined') {
+					if(token === us[user]["token"]){
+						var db = req.body.db;
+						var file = req.body.file;
+						var data = req.body.data;
+						if (!fs.existsSync(dh_dir + 'Account/' + ac + '/db/' + db + '/')) {
+							fs.mkdirSync(dh_dir + 'Account/' + ac + '/db/' + db + '/');
+						}
+						fs.writeFileSync(dh_dir + 'Account/' + ac + '/db/' + db + '/' + file, data);
+						res.send("Saved");
+					}
+					else{
+						res.send("Bad Token");
+					}
+				}
+				else{
+					res.send("No User");
+				}
+			}
+			else{
+				res.send("Bad Key");
+			}
+		}
+		else{
+			res.send("No Account");
+		}
+	}
+	else{
+		res.send("No dir");
+	}
 });
-/*db.post('/check', function(req, res) {
-  var test = req.body.token;
-  if(test == 'afbshjklfb'){
-    res.send('yes');
-  }
-  else{
-    res.send('no');
-  }
+db.post('/get', function(req, res) {
+	if(fs.existsSync(dh_dir + 'ac.json')){
+		var ac = req.body.ac;
+		var key = req.body.key;
+		var obj = JSON.parse(fs.readFileSync(dh_dir + 'ac.json', 'utf8'));
+		key = SHA256(key);
+		key = key.toString();
+		if (typeof obj[ac] !== 'undefined') {
+			if(key === obj[ac]["key"]){
+				var user = req.body.user;
+				var token = req.body.token;
+				var us = JSON.parse(fs.readFileSync(dh_dir + 'Account/' + ac + '/user.json', 'utf8'));
+				token = SHA256(token);
+				token = token.toString();
+				if (typeof us[user] !== 'undefined') {
+					if(token === us[user]["token"]){
+						var db = req.body.db;
+						var file = req.body.file;
+						if (fs.existsSync(dh_dir + 'Account/' + ac + '/db/' + db + '/' + file)) {
+							var data = fs.readFileSync(dh_dir + 'Account/' + ac + '/db/' + db + '/' + file);
+							res.send(data);
+						}
+						else{
+							res.send("Does not exist.");
+						}
+					}
+					else{
+						res.send("Bad Token");
+					}
+				}
+				else{
+					res.send("No User");
+				}
+			}
+			else{
+				res.send("Bad Key");
+			}
+		}
+		else{
+			res.send("No Account");
+		}
+	}
+	else{
+		res.send("No dir");
+	}
 });
+/*
 db.get('/get', function (req, res) {
   //var key = req.query.api;
   var user_id = req.query.id;
@@ -117,15 +197,7 @@ db.get('/get', function (req, res) {
   var geo = req.query.geo;
   res.send(user_id + ' ' + token + ' ' + geo);
 });
-db.post('/post', function(req, res) {
-  //console.log(req.body);
-  var key = req.query.api;
-    var user_id = req.body.id;
-    var token = req.body.token;
-    var geo = req.body.geo;
-
-    res.send(key + ' ' + user_id + ' ' + token + ' ' + geo);
-});*/
+*/
 db.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
