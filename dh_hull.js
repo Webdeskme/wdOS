@@ -98,6 +98,44 @@ else{
     res.send('Deskhull is not setup on this system');
   }
 });
+db.post('/check', function(req, res) {
+	if(fs.existsSync(dh_dir + 'ac.json')){
+		var ac = req.body.ac;
+		var key = req.body.key;
+		var obj = JSON.parse(fs.readFileSync(dh_dir + 'ac.json', 'utf8'));
+		key = SHA256(key);
+		key = key.toString();
+		if (typeof obj[ac] !== 'undefined') {
+			if(key === obj[ac]["key"]){
+				var user = req.body.user;
+				var token = req.body.token;
+				var us = JSON.parse(fs.readFileSync(dh_dir + 'Account/' + ac + '/user.json', 'utf8'));
+				token = SHA256(token);
+				token = token.toString();
+				if (typeof us[user] !== 'undefined') {
+					if(token === us[user]["token"]){
+						res.send(us[user]["tier"]);
+					}
+					else{
+						res.send("Bad");
+					}
+				}
+				else{
+					res.send("Bad");
+				}
+			}
+			else{
+				res.send("Bad");
+			}
+		}
+		else{
+			res.send("Bad");
+		}
+	}
+	else{
+		res.send("Bad");
+	}
+});
 db.post('/post', function(req, res) {
 	if(fs.existsSync(dh_dir + 'ac.json')){
 		var ac = req.body.ac;
