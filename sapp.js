@@ -71,6 +71,24 @@ web.use(express.urlencoded({extended: true}));
 m.use("/", express.static(dh_homedir + '/Documents/wdOS/App'));
 m.use("/Plugins", express.static( __dirname + '/Plugins'));
 m.use("/apps", express.static(dh_homedir + '/Documents/wdOS/WebFrame'));
+///////////////////////////////////////////////////////////
+
+
+
+
+m.post('/WebFrame/post', function (req, res) {
+   var user = req.body.user;
+   var pwd = req.body.pwd;
+   afile = fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/webframe.json');
+   $.post("demo_test.asp",{ac: afile["ac"], key: afile["key"], user: user, pwd: pwd}, function(data, status){
+   //alert("Data: " + data + "\nStatus: " + status);
+  });
+});
+
+
+
+
+///////////////////////////////////////////////////////
 m.use("/WebFrame", express.static( __dirname + '/WebFrame'));
 m.get('/WebFrame/apps.html', function (req, res) {
    res.send(cona);
