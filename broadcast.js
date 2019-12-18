@@ -8,6 +8,7 @@ $(document).ready(function() {
   const wd_homedir = require('os').homedir();
   var wd_dir = wd_homedir + '/Documents' + '/wdOS/WWW/';
   var wd_cast = wd_homedir + '/Documents' + '/wdOS/Cast/';
+  var wd_app = wd_homedir + '/Documents' + '/wdOS/App/';
   var wd_home = wd_homedir + '/Documents/wdOS/';
   var file = fs.readFileSync(wd_home + 'Core/broad.json');
   var broad = JSON.parse(file);
@@ -57,6 +58,9 @@ $(document).ready(function() {
   });
   $("#wd_cast").click(function(){
     shell.openItem(wd_cast);
+  });
+  $("#wd_app").click(function(){
+    shell.openItem(wd_app);
   });
   $(document).on('click', 'a[href^="http"]', function(event) {
     event.preventDefault();

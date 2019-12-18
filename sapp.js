@@ -4,6 +4,8 @@ var web = express();
 var bodyParser = require("body-parser");
 var favicon = require("serve-favicon");
 var morgan = require("morgan");
+var os = require('os');
+var ifaces = os.networkInterfaces();
 m.use(favicon(__dirname + '/favicon.ico'));
 const dh_homedir = require('os').homedir();
 var dh_www = dh_homedir + '/Documents/wdOS/App/';
@@ -43,7 +45,19 @@ for (var key in p) {
         var file = fs.readFileSync(dh_www + key + '/wd.json');
         var obj = JSON.parse(file);
         var aname = obj.name.substr(0, 9);
-        con = con + '<div class="col-sm-1 wd_apps" data-toggle="tooltip" title="' + obj.des + '"><a href="http://127.0.0.1:' + p[key] + '/index.html" target="_blank"><img class="card-img-bottom" src="' + key + '/ic.png" alt="' + obj.name + '" style="width:100%"></a><figcaption><a href="http://127.0.0.1:' + p[key] + '/index.html" class="text-light" target="_blank">' + aname + '</a></figcaption></div>';
+        
+        Object.keys(ifaces).forEach(function (ifname) {
+        ifaces[ifname].forEach(function (iface) {
+		  if ('IPv4' !== iface.family || iface.internal !== false) {
+		  // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+		  return;
+		  }
+        
+        con = con + '<div class="col-sm-1 wd_apps" data-toggle="tooltip" title="' + obj.des + '"><a href="http://' + iface.address + ':' + p[key] + '/index.html" target="_blank"><img class="card-img-bottom" src="' + key + '/ic.png" alt="' + obj.name + '" style="width:100%"></a><figcaption><a href="http://' + iface.address + ':' + p[key] + '/index.html" class="text-light" target="_blank">' + aname + '</a></figcaption></div>';
+        
+        });
+	});
+        
         app['s' + x].use(function(req, res, next) {
             res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
         });

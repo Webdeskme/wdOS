@@ -47,7 +47,7 @@ $(document).ready(function(){
       dataType: dataType,
       async:false
     });*/
-    $.post("http://127.0.0.1:4002/login",
+    $.post("webframe/login",
   {
     user: userl,
     pwd: pwdl

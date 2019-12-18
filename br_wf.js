@@ -14,7 +14,7 @@ $(document).ready(function(){
 				ac: ac
 			},
 			function(data, status){
-			fs.writeFileSync(wf_dir, '{"url":"' + url + '","key":"' + data + '"}');
+			fs.writeFileSync(wf_dir, '{"url":"' + url + '","ac":"' + ac + '","key":"' + data + '"}');
 			console.log("Data: " + data + "\nStatus: " + status);
 			alert("Saved");
 		});
