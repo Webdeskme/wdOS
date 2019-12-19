@@ -117,12 +117,15 @@ m.get('/WebFrame/app.html', function (req, res) {
 	afile = JSON.parse(fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/webframe.json'));
    $.post(afile["url"] + "/check",{ac: afile["ac"], key: afile["key"], user: user, token: token}, function(data, status){
 	   if(data !== "Bad"){
-	var p = req.query.p;
-	var a = req.query.a;
-	var page = require(dh_homedir + '/Documents/wdOS/WebFrame/' + a + '/' + p + '.js');
-	var py = page.c();
-	res.send(py);
-}
+			var p = req.query.p;
+			var a = req.query.a;
+			var page = require(dh_homedir + '/Documents/wdOS/WebFrame/' + a + '/' + p + '.njs');
+			var py = page.c();
+			res.send(py);
+		}
+		else{
+			res.send('');
+		}
 	});
 });
 
