@@ -114,15 +114,20 @@ web.post('/check', function (req, res) {
 });
 
 web.get('/app.html', function (req, res) {
-	var user = req.query.u;
-	var token = req.query.t;
+	var user = req.query.wf_u;
+	var token = req.query.wf_t;
 	afile = JSON.parse(fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/webframe.json'));
    $.post(afile["url"] + "/check",{ac: afile["ac"], key: afile["key"], user: user, token: token}, function(data, status){
 	   if(data !== "Bad"){
-			var p = req.query.p;
-			var a = req.query.a;
-			var page = require(dh_homedir + '/Documents/wdOS/WebFrame/' + a + '/' + p + '.njs');
-			var py = page.c();
+			var p = req.query.wf_p;
+			var a = req.query.wf_a;
+			if (fs.existsSync(dh_homedir + '/Documents/wdOS/WebFrame/' + a + '/' + p + '.njs')) {
+				var page = require(dh_homedir + '/Documents/wdOS/WebFrame/' + a + '/' + p + '.njs');
+				var py = page.c(req.query);
+			}
+			else{
+				var py = "";
+			}
 			res.send(py);
 		}
 		else{

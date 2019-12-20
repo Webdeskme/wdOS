@@ -22,14 +22,14 @@ else{
       //alert(app);
       if (app != null && app != "") {
 		 if (sec != null && app != "") {
-          $("#head").load("app.html?p=header&a=" + app + "&u=" + sessionStorage.getItem("user") + "&t=" + sessionStorage.getItem("token"));
-          $("#app").load("app.html?p=" + sec + "&a=" + app + "&u=" + sessionStorage.getItem("user") + "&t=" + sessionStorage.getItem("token"));
-          $("#foot").load("app.html?p=footer&a=" + app + "&u=" + sessionStorage.getItem("user") + "&t=" + sessionStorage.getItem("token"));
+          $("#head").load("app.html" + window.location.search + "&wf_p=header&wf_a=" + app + "&wf_u=" + sessionStorage.getItem("user") + "&wf_t=" + sessionStorage.getItem("token"));
+          $("#app").load("app.html" + window.location.search + "&wf_p=" + sec + "&wf_a=" + app + "&wf_u=" + sessionStorage.getItem("user") + "&wf_t=" + sessionStorage.getItem("token"));
+          $("#foot").load("app.html" + window.location.search + "&wf_p=footer&wf_a=" + app + "&wf_u=" + sessionStorage.getItem("user") + "&wf_t=" + sessionStorage.getItem("token"));
         }
         else{
-          $("#head").load("app.html?p=header&a=" + app + "&u=" + sessionStorage.getItem("user") + "&t=" + sessionStorage.getItem("token"));
-          $("#app").load("app.html?p=index&a=" + app + "&u=" + sessionStorage.getItem("user") + "&t=" + sessionStorage.getItem("token"));
-          $("#foot").load("app.html?p=footer&a=" + app + "&u=" + sessionStorage.getItem("user") + "&t=" + sessionStorage.getItem("token"));
+          $("#head").load("app.html" + window.location.search + "&wf_p=header&a=" + app + "&wf_u=" + sessionStorage.getItem("user") + "&wf_t=" + sessionStorage.getItem("token"));
+          $("#app").load("app.html" + window.location.search + "&wf_p=index&a=" + app + "&wf_u=" + sessionStorage.getItem("user") + "&wf_t=" + sessionStorage.getItem("token"));
+          $("#foot").load("app.html" + window.location.search + "&wf_p=footer&a=" + app + "&wf_u=" + sessionStorage.getItem("user") + "&wf_t=" + sessionStorage.getItem("token"));
         }
         /*if (sec != null && app != "") {
           $("#head").load("../apps/" + app + "/header.html");
