@@ -2,7 +2,7 @@ if(!sessionStorage.token){
   window.location.assign("index.html");
 }
 else{
-  $.post("/webframe/check",
+  $.post("/check",
   {
     token: sessionStorage.getItem("token"),
     user: sessionStorage.getItem("user")

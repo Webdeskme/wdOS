@@ -7,6 +7,7 @@ var morgan = require("morgan");
 var os = require('os');
 var ifaces = os.networkInterfaces();
 m.use(favicon(__dirname + '/favicon.ico'));
+web.use(favicon(__dirname + '/favicon.ico'));
 const dh_homedir = require('os').homedir();
 var dh_www = dh_homedir + '/Documents/wdOS/App/';
 var fs = require('fs');
@@ -84,13 +85,14 @@ web.use(express.urlencoded({extended: true}));
   cona = cona + '</ul></div>';
 m.use("/", express.static(dh_homedir + '/Documents/wdOS/App'));
 m.use("/Plugins", express.static( __dirname + '/Plugins'));
-m.use("/apps", express.static(dh_homedir + '/Documents/wdOS/WebFrame'));
+web.use("/Plugins", express.static( __dirname + '/Plugins'));
+web.use("/apps", express.static(dh_homedir + '/Documents/wdOS/WebFrame'));
 ///////////////////////////////////////////////////////////
 
 
 
 
-m.post('/WebFrame/post', function (req, res) {
+web.post('/post', function (req, res) {
    var user = req.body.user;
    var pwd = req.body.pwd;
    afile = JSON.parse(fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/webframe.json'));
@@ -100,7 +102,7 @@ m.post('/WebFrame/post', function (req, res) {
   });
 });
 
-m.post('/WebFrame/check', function (req, res) {
+web.post('/check', function (req, res) {
    var user = req.body.user;
    var token = req.body.token;
    afile = JSON.parse(fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/webframe.json'));
@@ -111,7 +113,7 @@ m.post('/WebFrame/check', function (req, res) {
   //res.send(req.body.user);
 });
 
-m.get('/WebFrame/app.html', function (req, res) {
+web.get('/app.html', function (req, res) {
 	var user = req.query.u;
 	var token = req.query.t;
 	afile = JSON.parse(fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/webframe.json'));
@@ -149,8 +151,9 @@ m.get('/WebFrame/app.html', function (req, res) {
 });*/
 
 ///////////////////////////////////////////////////////
-m.use("/WebFrame", express.static( __dirname + '/WebFrame'));
-m.get('/WebFrame/apps.html', function (req, res) {
+web.use("/", express.static(dh_homedir + '/Documents/wdOS/WWW'));
+web.use("/", express.static( __dirname + '/WebFrame'));
+web.get('/apps.html', function (req, res) {
    res.send(cona);
 });
 m.get('/', function (req, res) {
@@ -159,7 +162,6 @@ m.get('/', function (req, res) {
 m.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
-web.use("/", express.static(dh_homedir + '/Documents/wdOS/WWW'));
 web.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
