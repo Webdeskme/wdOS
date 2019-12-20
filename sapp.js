@@ -45,19 +45,19 @@ for (var key in p) {
         var file = fs.readFileSync(dh_www + key + '/wd.json');
         var obj = JSON.parse(file);
         var aname = obj.name.substr(0, 9);
-        
+
         Object.keys(ifaces).forEach(function (ifname) {
         ifaces[ifname].forEach(function (iface) {
 		  if ('IPv4' !== iface.family || iface.internal !== false) {
 		  // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
 		  return;
 		  }
-        
+
         con = con + '<div class="col-sm-1 wd_apps" data-toggle="tooltip" title="' + obj.des + '"><a href="http://' + iface.address + ':' + p[key] + '/index.html" target="_blank"><img class="card-img-bottom" src="' + key + '/ic.png" alt="' + obj.name + '" style="width:100%"></a><figcaption><a href="http://' + iface.address + ':' + p[key] + '/index.html" class="text-light" target="_blank">' + aname + '</a></figcaption></div>';
-        
+
         });
 	});
-        
+
         app['s' + x].use(function(req, res, next) {
             res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
         });
@@ -102,12 +102,12 @@ m.post('/WebFrame/post', function (req, res) {
 
 m.post('/WebFrame/desktop', function (req, res) {
 	var con = '<!DOCTYPE html><html><head><title>WebFrame</title><link rel="stylesheet" href="../Plugins/bootstrap/dist/css/bootstrap.min.css"></head><body>';
-	
-	
+
+
 	// con here
-	
-	
-	
+
+
+
 	con = con + '<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-bottom"><a class="navbar-brand" href="https://www.webfra.me/" target="_blank">WebFrame</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="collapsibleNavbar"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="desktop.html">Apps</a></li><li class="nav-item"><a class="nav-link" href="#" target="_blank">Market Place</a></li><li class="nav-item"><a class="nav-link" href="#" target="_blank">Privacy</a></li><li class="nav-item"><a class="nav-link" href="#" target="_blank">Terms</a></li></ul></div></nav><script src="../Plugins/jquery.min.js"></script><script src="../Plugins/popper.min.js"></script><script src="../Plugins/bootstrap/dist/js/bootstrap.min.js"></script><script src="desktop.js"></script></body></html>';
 });
 
@@ -126,12 +126,12 @@ web.use("/", express.static(dh_homedir + '/Documents/wdOS/WWW'));
 web.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
-m.post('/login', function(req, res) {
+/*m.post('/login', function(req, res) {
     var user = req.body.user;
     var pwd = req.body.pwd;
     res.send(user);
     //res.send('{"' + user + '":"' + pwd + '"}');
-});
+});*/
 if(serv == "on"){
 var server = m.listen(4000, function () {
    //var host = server.address().address
