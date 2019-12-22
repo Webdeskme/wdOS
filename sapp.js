@@ -87,10 +87,6 @@ m.use("/", express.static(dh_homedir + '/Documents/wdOS/App'));
 m.use("/Plugins", express.static( __dirname + '/Plugins'));
 web.use("/Plugins", express.static( __dirname + '/Plugins'));
 web.use("/apps", express.static(dh_homedir + '/Documents/wdOS/WebFrame'));
-///////////////////////////////////////////////////////////
-
-
-
 
 web.post('/post', function (req, res) {
    var user = req.body.user;
@@ -100,6 +96,23 @@ web.post('/post', function (req, res) {
    //alert("Data: " + data + "\nStatus: " + status);
    res.send(data);
   });
+});
+
+web.post('/sub', function (req, res) {
+	var user = req.body.user;
+   var token = req.body.token;
+   afile = JSON.parse(fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/webframe.json'));
+   $.post(afile["url"] + "/check",{ac: afile["ac"], key: afile["key"], user: user, token: token}, function(data, status){
+	   if(data !== "Bad"){
+		   var sec = req.body.sec;
+			var app = req.body.app;
+			var tools = require(dh_homedir + '/Documents/wdOS/WebFrame/' + app + '/' + sec + '.njs');
+			res.send(tools.c(req));
+	   }
+	   else{
+			res.send('');
+		}
+   });
 });
 
 web.post('/check', function (req, res) {
@@ -136,26 +149,6 @@ web.get('/app.html', function (req, res) {
 	});
 });
 
-/*m.get('/WebFrame/desktop', function (req, res) {
-	
-	var con = '<!DOCTYPE html><html><head><title>WebFrame</title><link rel="stylesheet" href="../Plugins/bootstrap/dist/css/bootstrap.min.css"></head><body>';
-
-
-	// con here
-<<<<<<< HEAD
-
-
-
-=======
-	
-	con = con + '<h1>Test</h1>';
-	
->>>>>>> 42eb6f0cd37b2023877661631a60d5fb4cb91d99
-	con = con + '<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-bottom"><a class="navbar-brand" href="https://www.webfra.me/" target="_blank">WebFrame</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="collapsibleNavbar"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="desktop.html">Apps</a></li><li class="nav-item"><a class="nav-link" href="#" target="_blank">Market Place</a></li><li class="nav-item"><a class="nav-link" href="#" target="_blank">Privacy</a></li><li class="nav-item"><a class="nav-link" href="#" target="_blank">Terms</a></li></ul></div></nav><script src="../Plugins/jquery.min.js"></script><script src="../Plugins/popper.min.js"></script><script src="../Plugins/bootstrap/dist/js/bootstrap.min.js"></script><script src="desktop.js"></script></body></html>';
-	res.send(con);
-});*/
-
-///////////////////////////////////////////////////////
 web.use("/", express.static(dh_homedir + '/Documents/wdOS/WWW'));
 web.use("/", express.static( __dirname + '/WebFrame'));
 web.get('/apps.html', function (req, res) {
@@ -170,12 +163,7 @@ m.use(function(req, res, next) {
 web.use(function(req, res, next) {
     res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
 });
-/*m.post('/login', function(req, res) {
-    var user = req.body.user;
-    var pwd = req.body.pwd;
-    res.send(user);
-    //res.send('{"' + user + '":"' + pwd + '"}');
-});*/
+
 if(serv == "on"){
 var server = m.listen(4000, function () {
    //var host = server.address().address
