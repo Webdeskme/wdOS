@@ -155,11 +155,17 @@ db.post('/post', function(req, res) {
 						var db = req.body.db;
 						var file = req.body.file;
 						var data = req.body.data;
+						if(db !== "wf_users"){
 						if (!fs.existsSync(dh_dir + 'Account/' + ac + '/db/' + db + '/')) {
 							fs.mkdirSync(dh_dir + 'Account/' + ac + '/db/' + db + '/');
 						}
 						fs.writeFileSync(dh_dir + 'Account/' + ac + '/db/' + db + '/' + file, data);
 						res.send("Saved");
+					}
+					else{
+						fs.writeFileSync(dh_dir + 'Account/' + ac + '/' + file, data);
+						res.send("Saved");
+					}
 					}
 					else{
 						res.send("Bad Token");
