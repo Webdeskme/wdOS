@@ -115,6 +115,22 @@ web.post('/sub', function (req, res) {
    });
 });
 
+web.post('/read', function (req, res) {
+	var user = req.body.user;
+   var token = req.body.token;
+   var app = req.body.app;
+   var file = req.body.file;
+   afile = JSON.parse(fs.readFileSync(dh_homedir + '/Documents/wdOS/Core/webframe.json'));
+   $.post(afile["url"] + "/get",{ac: afile["ac"], key: afile["key"], user: user, token: token, db: app, file: file}, function(data, status){
+	   if(data !== "Bad"){
+			res.send(data);
+	   }
+	   else{
+			res.send('');
+		}
+   });
+});
+
 web.post('/check', function (req, res) {
    var user = req.body.user;
    var token = req.body.token;

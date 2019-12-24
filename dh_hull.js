@@ -199,32 +199,38 @@ db.post('/get', function(req, res) {
 					if(token === us[user]["token"]){
 						var db = req.body.db;
 						var file = req.body.file;
+						if(db !== "wf_users"){
 						if (fs.existsSync(dh_dir + 'Account/' + ac + '/db/' + db + '/' + file)) {
 							var data = fs.readFileSync(dh_dir + 'Account/' + ac + '/db/' + db + '/' + file);
 							res.send(data);
 						}
 						else{
-							res.send("Does not exist.");
+							res.send("Bad");
 						}
 					}
 					else{
-						res.send("Bad Token");
+						var data = fs.readFileSync(dh_dir + 'Account/' + ac + '/' + file);
+							res.send(data);
+					}
+					}
+					else{
+						res.send("Bad");
 					}
 				}
 				else{
-					res.send("No User");
+					res.send("Bad");
 				}
 			}
 			else{
-				res.send("Bad Key");
+				res.send("Bad");
 			}
 		}
 		else{
-			res.send("No Account");
+			res.send("Bad");
 		}
 	}
 	else{
-		res.send("No dir");
+		res.send("Bad");
 	}
 });
 /*
