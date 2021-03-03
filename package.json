@@ -85,7 +85,7 @@
     "phaser": "^3.20.1",
     "popper.js": "^1.16.0",
     "prop-types": "^15.7.2",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "react": "^16.11.0",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",
