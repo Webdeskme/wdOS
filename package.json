@@ -62,7 +62,7 @@
   },
   "homepage": "https://github.com/Webdeskme/wdOS#readme",
   "devDependencies": {
-    "electron": "^9.4.0",
+    "electron": "^18.3.7",
     "electron-builder": "^21.2.0"
   },
   "dependencies": {
